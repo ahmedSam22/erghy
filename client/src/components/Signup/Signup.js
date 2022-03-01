@@ -4,6 +4,7 @@ import { ViewIcon } from '@chakra-ui/icons'
 
 const Signup = () => {
     const [show, setShow] = useState(false)
+    const [showConfirm, setShowConfirm] = useState(false)
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
@@ -11,6 +12,7 @@ const Signup = () => {
     const [pic, setPic] = useState()
 
     const showPassword = ()=> setShow(!show)
+    const showConfirmationPassword = ()=> setShowConfirm(!showConfirm)
     const postDetails = (pics)=>{}
     const submitHandler = ()=>{}
   
@@ -34,7 +36,7 @@ const Signup = () => {
                         <IconButton
                             colorScheme='teal'
                             aria-label='Call Segun'
-                            size='lg'
+                            size='md'
                             icon={<ViewIcon />}
                            onClick={showPassword}
                         />
@@ -45,13 +47,15 @@ const Signup = () => {
             <FormControl isRequired id="confirmPassword">
                 <FormLabel>confirm password</FormLabel>
                 <InputGroup>
-                    <Input type={show ? "text" : "password"} onChange={(e) => { setConfirmPassword(e.target.value) }} />
+                    <Input type={showConfirm ? "text" : "password"} onChange={(e) => { setConfirmPassword(e.target.value) }} />
                     <InputRightElement>
                         <IconButton
                             colorScheme='teal'
                             aria-label='Call Segun'
-                            size='lg'
+                            size='md'
                             icon={<ViewIcon />}
+                           onClick={showConfirmationPassword}
+
                           
                         />
                          

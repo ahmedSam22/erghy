@@ -28,7 +28,7 @@ const Login = () => {
                         <IconButton
                             colorScheme='teal'
                             aria-label='Call Segun'
-                            size='lg'
+                            size='md'
                             icon={<ViewIcon />}
                            onClick={showPassword}
                         />
