@@ -15,12 +15,12 @@ const Login = () => {
         <VStack spacing="5px">
 
 
-            <FormControl isRequired id="email">
+            <FormControl isRequired >
                 <FormLabel>email</FormLabel>
                 <Input onChange={(e) => { setEmail(e.target.value) }} />
             </FormControl>
 
-            <FormControl isRequired id="password">
+            <FormControl isRequired >
                 <FormLabel>password</FormLabel>
                 <InputGroup>
                     <Input type={show ? "text" : "password"} onChange={(e) => { setPassword(e.target.value) }} />
@@ -30,7 +30,7 @@ const Login = () => {
                             aria-label='Call Segun'
                             size='lg'
                             icon={<ViewIcon />}
-                           onChange={(e) => postDetails(e.target.files[0])}
+                           onClick={showPassword}
                         />
                          
                     </InputRightElement>

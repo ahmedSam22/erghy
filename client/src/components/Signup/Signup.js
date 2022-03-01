@@ -36,7 +36,7 @@ const Signup = () => {
                             aria-label='Call Segun'
                             size='lg'
                             icon={<ViewIcon />}
-                           onChange={(e) => postDetails(e.target.files[0])}
+                           onClick={showPassword}
                         />
                          
                     </InputRightElement>
