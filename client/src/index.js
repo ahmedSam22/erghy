@@ -5,7 +5,7 @@ import App from './App';
 import { ChakraProvider } from '@chakra-ui/react';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import { Route } from 'react-router-dom';
 
 

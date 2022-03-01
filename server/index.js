@@ -1,8 +1,13 @@
 const express = require("express");
 const chats = require("./data/data");
+const dotenv = require("dotenv")
 const app = express();
+var cors = require('cors');
+const { default: mongoose } = require("mongoose");
+const ConnectDB = require("./config/db");
 
-
+ConnectDB()
+app.use(cors())
 
 app.get('/',(req,res)=>{ 
     res.send("hhh");
@@ -20,5 +25,5 @@ app.get('/api/chat/:id',(req,res)=>{
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT , ()=>{
-    console.log("tamam");
+    console.log("connected");
 })
