@@ -1,15 +1,41 @@
-import { FormControl, FormLabel, IconButton, Input, InputGroup, InputRightElement, VStack,Button } from '@chakra-ui/react'
+import { FormControl, FormLabel, IconButton, Input, InputGroup, InputRightElement, VStack,Button,useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { ViewIcon } from '@chakra-ui/icons'
+import { useHistory} from 'react-router-dom';
+import axios from "axios"
 
 const Login = () => {
+    const history = useHistory();
     const [show, setShow] = useState(false)
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [loading, setLoading] = useState(false)
+    const toast = useToast()
 
     const showPassword = ()=> setShow(!show)
-    const postDetails = (pics)=>{}
-    const submitHandler = ()=>{}
+    const submitHandler = ()=>{
+        setLoading(true)
+        if(!email || !password){
+            setLoading(false)
+            return toast({
+                title: 'please enter the data',
+                status: 'warning',
+                duration: 4000,
+                isClosable: true,
+              });
+        }else{
+            axios.post("http://localhost:5000/api/login",{
+                email , password
+            })
+            .then(function (response) {
+                localStorage.setItem("token", response.data.token);
+                history.push('/home')
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        }
+    }
   
     return (
         <VStack spacing="5px">
@@ -43,6 +69,7 @@ const Login = () => {
             width="100%"
             style={{marginTop : 15}}
             onClick={submitHandler}
+            isLoading={loading}
             >
                Login! 
             </Button>

@@ -4,7 +4,7 @@ const ConnectDB = async()=>{
 
     try{
         mongoose.connect("mongodb+srv://arwa:ardb@arwa.xhhx7.mongodb.net/ar?retryWrites=true&w=majority" , function () {
-            console.log('arwa is' , mongoose.connection.readyState)
+            console.log('connection state is : ' , mongoose.connection.readyState)
         });
     
     }catch(error){
