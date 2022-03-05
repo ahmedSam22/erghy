@@ -1,2 +1,18 @@
+api-map:-
+/ =>user roures
+/user (post) => register
+/user => (get) => for search.
+
+chat => chat routes
+(post) "/" => accessChat;
+(get) "/" => fetchChat;
+(post) /group => createGroup;
+(put) /group => renameGroup;
+(put) /group/add => addToGroup;
+(put) /group/remove => removeFromGroup);
+
+
+--future feature
+upload images.
 if group chat length < 2 , fetch one to one chat.
 check before adding to group chat.
