@@ -7,7 +7,8 @@ const { mongoose } = require("mongoose");
 const bp = require('body-parser')
 const ConnectDB = require("./config/db");
 
-const userRoutes = require("./routes/userRoutes")
+const userRoutes = require("./routes/userRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 
 
 ConnectDB()
@@ -15,12 +16,11 @@ ConnectDB()
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 app.use(cors())
-app.use("/api" , userRoutes);
+app.use("/" , userRoutes);
+app.use("/chat" , chatRoutes);
 
 
-app.get('/',(req,res)=>{ 
-    res.send("hhh");
-})
+
 
 // app.get('/api/chat',(req,res)=>{
 //     res.send(chats);

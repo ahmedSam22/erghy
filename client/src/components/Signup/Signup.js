@@ -29,7 +29,7 @@ const Signup = () => {
                   
         }else{
             console.log({name , email , password});
-            axios.post('http://localhost:5000/api/user', {
+            axios.post('http://localhost:5000/user', {
                 name , email , password
               })
               .then(function (response) {

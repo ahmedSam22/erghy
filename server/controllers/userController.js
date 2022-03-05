@@ -1,10 +1,7 @@
 const Users = require("../models/userModel");
 const jwt = require('jsonwebtoken');
 
-
-
 const createUser = (query) => Users.create(query);
-
 const login = async ({email , password} , next) =>{
     const user = await Users.findOne({ email }).exec();
     if(!user){
@@ -30,9 +27,6 @@ const login = async ({email , password} , next) =>{
 
      
 }
-
-
-
 
 module.exports = {createUser,login}
 

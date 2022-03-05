@@ -7,7 +7,6 @@ const userModel = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
     },
     email: {
         type: String,
@@ -46,6 +45,6 @@ userModel.methods.comparePassword =  function(password){
     return bcrypt.compareSync(password, this.password)
 }
 
-const Users = mongoose.model("Users" , userModel);
+const Users = mongoose.model("user" , userModel);
 
 module.exports = Users
