@@ -24,7 +24,7 @@ const Login = () => {
                 isClosable: true,
               });
         }else{
-            axios.post("http://localhost:5000/api/login",{
+            axios.post("http://localhost:5000/login",{
                 email , password
             })
             .then(function (response) {

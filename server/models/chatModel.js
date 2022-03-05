@@ -9,7 +9,7 @@ const chatModel = new mongoose.Schema(
         isGroupChat: { type: Boolean, default: false },
         users: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref : "User"
+            ref : "user"
         }
         ],
         latestMessage : {
@@ -18,7 +18,7 @@ const chatModel = new mongoose.Schema(
         },
         isGroupAdmin:{
             type: mongoose.Schema.Types.ObjectId,
-            ref : "User"
+            ref : "user"
         }
     },{
         timestamps : true

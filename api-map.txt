@@ -1,0 +1,2 @@
+if group chat length < 2 , fetch one to one chat.
+check before adding to group chat.
