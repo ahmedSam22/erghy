@@ -29,12 +29,25 @@ const Login = () => {
             })
             .then(function (response) {
                 localStorage.setItem("token", response.data.token);
-                history.push('/home')
+
+                localStorage.setItem("userCheck", JSON.stringify(response.data.userCheck) );
+                setTimeout(() => {
+                    history.push('/chat')
+                }, 1000);
+                
               })
               .catch(function (error) {
                 console.log(error);
               });
+              toast({
+                title: 'login success',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+              });
         }
+      console.log( localStorage.getItem("token"),"token catch");
+
     }
   
     return (
