@@ -3,8 +3,22 @@ import './Home.css';
 import { Box, Container,Text,TabList,Tab,Tabs,TabPanels,TabPanel } from "@chakra-ui/react"
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Home() {
+  const test = localStorage.getItem("token");
+  const history = useHistory()
+  if(test){
+    history.push("/chat")
+  }
+    useEffect(() => {
+      // const userInfo = JSON.parse(localStorage.getItem("token"));
+      // console.log(userInfo);
+      // if(userInfo){
+      //     history.push("/chat")
+      // }
+    }, [history])
 
     
   return (

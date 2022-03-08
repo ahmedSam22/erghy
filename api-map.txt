@@ -13,6 +13,11 @@ chat => chat routes
 
 
 --future feature
+
+backend--
 upload images.
 if group chat length < 2 , fetch one to one chat.
 check before adding to group chat.
+
+frontend--
+show toast if password is wrong

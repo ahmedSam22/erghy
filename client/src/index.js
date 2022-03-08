@@ -5,18 +5,17 @@ import App from './App';
 import { ChakraProvider } from '@chakra-ui/react';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
-import Home from './pages/Home/Home';
-import { Route } from 'react-router-dom';
+import ChatProvider from './context/chatProvider';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ChatProvider>
     <BrowserRouter>
     <ChakraProvider>
        <App />
     </ChakraProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </ChatProvider>,
   document.getElementById('root')
 );
 

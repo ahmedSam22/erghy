@@ -15,6 +15,7 @@ const login = async ({email , password} , next) =>{
     }
     if(user && verified){
         console.log("login success");
+
         return jwt.sign({
             email ,
             id : user._id,

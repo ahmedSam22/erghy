@@ -1,25 +1,36 @@
-import { useEffect, useState } from "react";
-import axios from 'axios'
+import { Box } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
+import ChatBox from "../../components/ChatBox/ChatBox";
+import MyChat from "../../components/MyChat/MyChat";
+import SideBar from "../../components/shared/SideBar/SideBar";
+import { ChatState } from "../../context/chatProvider";
+import './Chat.css';
+
+
 
 function Chat() {
-  const [chat,setChat] = useState([])
+  const {user} = ChatState()
+  const test = localStorage.getItem("token");
+  const history = useHistory()
+  if(!test){
+    history.push("/")
+  }
 
-    const fetchChats = async () =>{
-        const { data } = await axios.get("http://localhost:5000/api/chat");
-        setChat(data);
-    }
-
-
-    useEffect(()=>{
-        fetchChats()
-    },[])
   return (
-    <div className="">   
-      chattt
+    <div className="main">   
+      {user && <SideBar />}
+      <Box
+      d="flex"
+      justifyContent={"space-between"}
+      w="100%"
+      h={"91.5vh"}
+      p="10px"
+      >
+      {user && <MyChat />}
+      {user && <ChatBox />}
+      </Box>
       <div>
-        {chat.map((e)=>{
-         return <div key={e._id}> {e.chatName} </div>
-        })}
+
       </div>
     </div>
   );
