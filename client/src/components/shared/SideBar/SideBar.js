@@ -15,7 +15,7 @@ const SideBar = () => {
   const [loading, setLoading] = useState(false)
   const [loadingChat, setLoadingChat] = useState()
   const history = useHistory()
-  const { user,setSelectedChat,token,selectedChat,chats,setChats } = ChatState()
+  const { user,setSelectedChat,token,selectedChat,chats,setChats,header } = ChatState()
   const toast = useToast()
 
 
@@ -34,12 +34,7 @@ const SideBar = () => {
     }
     try {
       setLoading(true)
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }
-      const { data } = await axios.get(`http://localhost:5000/user?search=${search}`, config)
+      const { data } = await axios.get(`http://localhost:5000/user?search=${search}`, header)
       setLoading(false)
       setSearchResult(data)
 
@@ -58,16 +53,11 @@ const SideBar = () => {
   const accessChat = async (userId) =>{
     try {
       setLoadingChat(true)
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }
 
-      const { data } = await axios.post("http://localhost:5000/chat" , {userId} , config)
+      const { data } = await axios.post("http://localhost:5000/chat" , {userId} , header)
       
         // if(!chats.find((e) => e._id === data._id)) setChats([data ,...chats])
-
+        setChats([data , ...chats])
       setSelectedChat(data)
       setLoadingChat(false)
       onClose()

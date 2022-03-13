@@ -8,6 +8,7 @@ const ChatProvider = ({children}) => {
     const [token, setToken] = useState()
     const [chats, setChats] = useState([])
     const [selectedChat, setSelectedChat] = useState()
+    const [header, setHeader] = useState()
     const history = useHistory()
     
     useEffect(() => {
@@ -16,6 +17,12 @@ const ChatProvider = ({children}) => {
       setUser(userCheck)
       setToken(logedin)
 
+      setHeader({
+        headers: {
+          'Authorization': `Bearer ${logedin}`
+        }
+      })
+
       if(!logedin){
 
         // history.push('/')
@@ -23,7 +30,7 @@ const ChatProvider = ({children}) => {
     }, [history])
     
     return (
-    <ChatContext.Provider value={{user, token,selectedChat, setSelectedChat,chats, setChats}}>
+    <ChatContext.Provider value={{user, token,selectedChat, setSelectedChat,chats, setChats,header}}>
         {children}
         </ChatContext.Provider>);
 }

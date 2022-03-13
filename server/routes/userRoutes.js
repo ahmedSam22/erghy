@@ -15,11 +15,11 @@ router.post("/user", async (req, res, next) => {
 
   //LOGIN
   router.post("/login" , async (req,res , next) =>{
-    const {email , password} = req.body;
-    const userCheck = await Users.findOne({ email }).select("-password").exec();
+    const {name , password} = req.body;
+    const userCheck = await Users.findOne({ name }).select("-password").exec();
     try{
       if(userCheck){
-      const token = await login({email , password}, next);
+      const token = await login({name , password}, next);
       res.json({token,userCheck})
     }
     }catch(e){

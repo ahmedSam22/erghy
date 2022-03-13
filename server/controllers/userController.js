@@ -2,8 +2,8 @@ const Users = require("../models/userModel");
 const jwt = require('jsonwebtoken');
 
 const createUser = (query) => Users.create(query);
-const login = async ({email , password} , next) =>{
-    const user = await Users.findOne({ email }).exec();
+const login = async ({name , password} , next) =>{
+    const user = await Users.findOne({ name }).exec();
     if(!user){
         next("invalid username ");
         return ;
@@ -17,7 +17,7 @@ const login = async ({email , password} , next) =>{
         console.log("login success");
 
         return jwt.sign({
-            email ,
+            name ,
             id : user._id,
             maxAge : "2d"
         },"jhiuhukgyglkhalhllh")
