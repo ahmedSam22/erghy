@@ -57,7 +57,7 @@ const SideBar = () => {
       const { data } = await axios.post("http://localhost:5000/chat" , {userId} , header)
       
         // if(!chats.find((e) => e._id === data._id)) setChats([data ,...chats])
-        setChats([data , ...chats])
+      setChats([data , ...chats])
       setSelectedChat(data)
       setLoadingChat(false)
       onClose()

@@ -30,7 +30,7 @@ function Chat() {
       p="10px"
       >
       {user && <MyChat fetchAgain={fetchAgain} />}
-      {user && <ChatBox  fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
+        {user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
       </Box>
       <div>
 

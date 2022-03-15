@@ -70,7 +70,7 @@ const GroupChatModal = ({ children }) => {
       setLoading(true)
       const { data } = await axios.post(`http://localhost:5000/chat/group`, {
         name : groupName,
-        users : JSON.stringify(members.map((i)=>i._id))
+        users : JSON.stringify(members.map((i)=>i._id)),
       },header)
       setLoading(false)
       setChats([data , ...chats])
@@ -141,9 +141,6 @@ const GroupChatModal = ({ children }) => {
             </div> : searchResult?.splice(0,4).map(user => (
               <UserListItem key={user._id} user={user} handleFunction={() => handleGroup(user)} />
             ))
-
-
-
             }
             {/* here */}
           </ModalBody>
