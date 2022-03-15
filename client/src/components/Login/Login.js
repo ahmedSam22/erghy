@@ -7,7 +7,7 @@ import axios from "axios"
 const Login = () => {
     const history = useHistory();
     const [show, setShow] = useState(false)
-    const [email, setEmail] = useState()
+    const [name, setEmail] = useState()
     const [password, setPassword] = useState()
     const [loading, setLoading] = useState(false)
     const toast = useToast()
@@ -15,7 +15,7 @@ const Login = () => {
     const showPassword = ()=> setShow(!show)
     const submitHandler = ()=>{
         setLoading(true)
-        if(!email || !password){
+        if(!name || !password){
             setLoading(false)
             return toast({
                 title: 'please enter the data',
@@ -25,7 +25,7 @@ const Login = () => {
               });
         }else{
             axios.post("http://localhost:5000/login",{
-                email , password
+                name , password
             })
             .then(function (response) {
                 localStorage.setItem("token", response.data.token);
@@ -55,7 +55,7 @@ const Login = () => {
 
 
             <FormControl isRequired >
-                <FormLabel>email</FormLabel>
+                <FormLabel>name</FormLabel>
                 <Input onChange={(e) => { setEmail(e.target.value) }} />
             </FormControl>
 
