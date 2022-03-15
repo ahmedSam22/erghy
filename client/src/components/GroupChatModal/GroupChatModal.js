@@ -82,6 +82,7 @@ const GroupChatModal = ({ children }) => {
         isClosable: true,
         position: "bottom"
       });
+      setMembers([])
 
     } catch (error) {
       toast({
