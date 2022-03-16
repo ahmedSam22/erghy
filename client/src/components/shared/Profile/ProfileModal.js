@@ -35,14 +35,14 @@ const ProfileModal = ({user , children}) => {
           fontFamily={"Work Sans"}
           d="flex"
           justifyContent={"center"}
-          >{user.name}</ModalHeader>
+          >{user?.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
           <Image 
             src={user.pic}
             borderRadius="full"
             boxSize={"150px"}
-            alt={user.name}
+            alt={user?.name}
             margin="auto"
           />
           <Text
