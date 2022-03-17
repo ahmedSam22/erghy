@@ -24,7 +24,7 @@ import UserListItem from '../UserListItem/UserListItem'
 import axios from 'axios'
 
 
-const UpdateModal = ({ fetchAgain, setFetchAgain }) => {
+const UpdateModal = ({ fetchAgain, setFetchAgain , fetchMessages }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { user, selectedChat, setSelectedChat, header } = ChatState()
     const [search, setSearch] = useState("")
@@ -84,8 +84,8 @@ const UpdateModal = ({ fetchAgain, setFetchAgain }) => {
 
             console.log(data);
             setSelectedChat(data)
-            
             setFetchAgain(!fetchAgain)
+            fetchMessages()
             setLoading(false)
 
 
