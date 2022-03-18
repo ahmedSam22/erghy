@@ -18,7 +18,9 @@ app.use("/chat" , chatRoutes);
 app.use("/message" , messageRoutes);
 
 // -------deployment--------
-
+const userRoutes = require("./routes/userRoutes");
+const chatRoutes = require("./routes/chatRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, 'build')));
