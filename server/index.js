@@ -1,16 +1,15 @@
 const express = require("express");
 const chats = require("./data/data");
-const dotenv = require("dotenv")
-const app = express();
+require("dotenv").config();const app = express();
 var cors = require('cors');
 const { mongoose } = require("mongoose");
 const bp = require('body-parser')
 const ConnectDB = require("./config/db");
+const path = require("path")
 
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
-
 
 ConnectDB()
 
@@ -22,6 +21,25 @@ app.use(cors())
 app.use("/" , userRoutes);
 app.use("/chat" , chatRoutes);
 app.use("/message" , messageRoutes);
+
+// -------deployment--------
+
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('client/build'))
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running..");
+  });
+}
+
+
+// -------deployment--------
+
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT , ()=>{
