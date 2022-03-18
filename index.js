@@ -7,10 +7,6 @@ const bp = require('body-parser')
 const ConnectDB = require("./config/db");
 const path = require("path")
 
-const userRoutes = require("./routes/userRoutes");
-const chatRoutes = require("./routes/chatRoutes");
-const messageRoutes = require("./routes/messageRoutes");
-
 ConnectDB()
 
 app.use(bp.json())
@@ -31,6 +27,11 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running..");
   });
 }
+
+
+const userRoutes = require("./routes/userRoutes");
+const chatRoutes = require("./routes/chatRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 // -------deployment--------
 
