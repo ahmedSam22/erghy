@@ -14,7 +14,7 @@ const chatModel = new mongoose.Schema(
         ],
         latestMessage : {
             type: mongoose.Schema.Types.ObjectId,
-            ref : "Message"
+            ref : "message"
         },
         isGroupAdmin:{
             type: mongoose.Schema.Types.ObjectId,
@@ -25,6 +25,6 @@ const chatModel = new mongoose.Schema(
     }
 )
 
-const Chat = mongoose.model("Chat", chatModel);
+const Chat = mongoose.model("chat", chatModel);
 
 module.exports = Chat

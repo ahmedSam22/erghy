@@ -53,16 +53,14 @@ const fetchChat = async (req , res , next) => {
         Chat.find({
             users: { $elemMatch: { $eq: req.user._id } }
             
-        }).populate("users", "-password").populate("isGroupAdmin","-password").populate("latestMessage").sort({updatedAt : -1}).then( async (results)=>{
-            console.log("first of result");
+        }).populate("users", "-password").populate("isGroupAdmin latestMessage","-password").sort({updatedAt : -1}).then( async (results)=>{
             results = await Users.populate(results , {
                 path : 'latestMessage.sender',
                 select : "name pic email"
             })
             res.status(200).send(results)
-            console.log("inside result");
         })
-        console.log("lastjjjjjjj");
+        console.log("done");
     } catch (error) {
         res.status(400)
         throw Error("test")

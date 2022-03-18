@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const messageModel = mongoose.Schema({
 sender : {
     type : mongoose.Schema.Types.ObjectId,
-    ref : "Users"
+    ref : "user"
 },
 content : {
     type : String,
@@ -13,10 +13,10 @@ content : {
 },
 chat : {
     type : mongoose.Schema.Types.ObjectId,
-    ref : "Chat"
+    ref : "chat"
 }
 })
 
-const Message = mongoose.model("Message", messageModel)
+const Message = mongoose.model("message", messageModel)
 
 module.exports = Message
