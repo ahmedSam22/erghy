@@ -49,6 +49,36 @@ const Login = () => {
       console.log( localStorage.getItem("token"),"token catch");
 
     }
+
+    const submitGuest = () =>{
+        setLoading(true)
+        setEmail("Guest")
+        setPassword("Guest")
+            axios.post("http://localhost:5000/login",{
+                name , password
+            })
+            .then(function (response) {
+                localStorage.setItem("token", response.data.token);
+
+                localStorage.setItem("userCheck", JSON.stringify(response.data.userCheck) );
+                setTimeout(() => {
+                    history.push('/chat')
+                }, 1000);
+                
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+              toast({
+                title: 'login success',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+              });
+        
+      console.log( localStorage.getItem("token"),"token catch");
+
+    }
   
     return (
         <VStack spacing="5px">
@@ -90,10 +120,7 @@ const Login = () => {
             colorScheme='red'
             width="100%"
             style={{marginTop : 15}}
-            onClick={()=>{
-                setEmail("guest@example.com");
-                setPassword("123456")
-            }}
+            onClick={submitGuest}
             >
                Login as Guest! 
             </Button>

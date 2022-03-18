@@ -125,7 +125,7 @@ const SideBar = () => {
                   setSelectedChat(noti.chat);
                   setNotification(notification.filter((n) => n !== noti));
                 }}>
-                  {noti.chat.isGroupChat ? `new message from ${noti.chat.chatName}` : `new message from ${getSender(user,noti.chat.users)}`}
+                  {noti.chat.isGroupChat ? (<Text color={"purple"}>{noti.chat.chatName}</Text>)  : `new message from ${getSender(user,noti.chat.users)}`}
                 </MenuItem>
               ))}
             </MenuList>
