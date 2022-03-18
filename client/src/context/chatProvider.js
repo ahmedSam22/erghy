@@ -18,10 +18,12 @@ const ChatProvider = ({ children }) => {
     setUser(userCheck)
     setToken(logedin)
 
+    function getToken() {
+      return { authorization: `Bearer ${logedin}` };
+    }
+
     setHeader({
-      headers: {
-        'Authorization': `Bearer ${logedin}`
-      }
+      headers: getToken()
     })
 
     if (!logedin) {

@@ -10,7 +10,7 @@ import GroupChatModal from '../GroupChatModal/GroupChatModal'
 const MyChat = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState()
   const [loading, setLoading] = useState()
-  const { user,setSelectedChat,token,selectedChat,chats,setChats } = ChatState()
+  const { user,setSelectedChat,token,selectedChat,chats,setChats,header } = ChatState()
   const toast = useToast()
 
 
@@ -19,12 +19,7 @@ const MyChat = ({fetchAgain}) => {
 
     try {
       setLoading(true)
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }
-      const { data } = await axios.get(`http://localhost:5000/chat`, config)
+      const { data } = await axios.get(`http://localhost:5000/chat`, header)
       setLoading(false)
       setChats(data)
       console.log(data);

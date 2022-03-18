@@ -17,7 +17,6 @@ app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 app.use(cors())
 
-
 app.use("/" , userRoutes);
 app.use("/chat" , chatRoutes);
 app.use("/message" , messageRoutes);
@@ -26,17 +25,12 @@ app.use("/message" , messageRoutes);
 
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static('client/build'))
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-  );
+    app.use(express.static(path.join(__dirname, 'build')));
 } else {
   app.get("/", (req, res) => {
     res.send("API is running..");
   });
 }
-
 
 // -------deployment--------
 

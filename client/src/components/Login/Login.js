@@ -29,11 +29,10 @@ const Login = () => {
             })
             .then(function (response) {
                 localStorage.setItem("token", response.data.token);
-
                 localStorage.setItem("userCheck", JSON.stringify(response.data.userCheck) );
                 setTimeout(() => {
-                    history.push('/chat')
-                }, 1000);
+                    history.push('/chat');
+                }, 2000);
                 
               })
               .catch(function (error) {
@@ -46,7 +45,6 @@ const Login = () => {
                 isClosable: true,
               });
         }
-      console.log( localStorage.getItem("token"),"token catch");
 
     }
 

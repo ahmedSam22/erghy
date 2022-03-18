@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ChatBox from "../../components/ChatBox/ChatBox";
 import MyChat from "../../components/MyChat/MyChat";
@@ -10,15 +10,17 @@ import './Chat.css';
 
 function Chat() {
   const {user} = ChatState()
-  const test = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   const history = useHistory()
   const [fetchAgain, setFetchAgain] = useState(false)
 
 
-  if(!test){
-    history.push("/")
-  }
+  // if(!token){
+  //   history.push("/")
+  // }
 
+  
+  
   return (
     <div className="main">   
       {user && <SideBar />}
