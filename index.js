@@ -13,14 +13,16 @@ app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 app.use(cors())
 
-app.use("/" , userRoutes);
-app.use("/chat" , chatRoutes);
-app.use("/message" , messageRoutes);
+
 
 // -------deployment--------
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+
+app.use("/" , userRoutes);
+app.use("/chat" , chatRoutes);
+app.use("/message" , messageRoutes);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, 'build')));
