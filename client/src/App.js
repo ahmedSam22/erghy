@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
           <Route path="/" exact component={Home} />
           <Route path="/chat" exact component={Chat} />
         </BrowserRouter>

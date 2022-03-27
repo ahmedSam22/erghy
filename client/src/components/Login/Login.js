@@ -31,7 +31,10 @@ const Login = () => {
                 localStorage.setItem("token", response.data.token);
 
                 localStorage.setItem("userCheck", JSON.stringify(response.data.userCheck) );
+                console.log("1");
+
                 setTimeout(() => {
+                    console.log("2");
                     history.push('/chat')
                 }, 1000);
                 
