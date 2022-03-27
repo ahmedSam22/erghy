@@ -1,10 +1,12 @@
 import { FormControl, FormLabel, IconButton, Input, InputGroup, InputRightElement, VStack,Button ,useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { ViewIcon } from '@chakra-ui/icons'
+import { useHistory} from 'react-router-dom';
 import axios from "axios";
 
 
 const Signup = () => {
+    const history = useHistory();
     const [show, setShow] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
     const [name, setName] = useState()
@@ -34,6 +36,7 @@ const Signup = () => {
               })
               .then(function (response) {
                 console.log(response);
+                loginSubmit(name, password);
               })
               .catch(function (error) {
                 console.log(error);
@@ -42,6 +45,28 @@ const Signup = () => {
         }
     }
   
+    const loginSubmit = (name, password) => {
+        axios.post("http://localhost:5000/login",{
+            name , password
+        })
+        .then(function (response) {
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userCheck", JSON.stringify(response.data.userCheck) );
+            setTimeout(() => {
+                history.push('/chat')
+            }, 1000);
+            toast({
+              title: 'login success',
+              status: 'success',
+              duration: 3000,
+              isClosable: true,
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
     return (
         <VStack spacing="5px">
             <FormControl isRequired id="name">
