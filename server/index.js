@@ -11,6 +11,9 @@ const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 
+const multer = require('multer');
+const upload = multer({dest:'public/'});
+
 
 ConnectDB()
 
@@ -18,8 +21,8 @@ app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 app.use(cors())
 
-
-app.use("/" , userRoutes);
+app.use(express.static('public'))
+app.use("/", userRoutes);
 app.use("/chat" , chatRoutes);
 app.use("/message" , messageRoutes);
 
